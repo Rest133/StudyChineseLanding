@@ -2,7 +2,8 @@
 
 window.addEventListener("DOMContentLoaded", () => {
     let allBlocks = document.querySelector('.content').querySelectorAll('.block');
-    let allChangeButtons = document.querySelector('.content').querySelectorAll('.change-block-btn');
+    let allNextButtons = document.querySelector('.content').querySelectorAll('.change-block-btn_next');
+    let allPrevButtons = document.querySelector('.content').querySelectorAll('.change-block-btn_prev');
     let indexActiveBlock = 1
 
     function chooseActiveBlock() {
@@ -14,9 +15,9 @@ window.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-    function scrollToBlock(targetBlock) {
+    function scrollToBlock(xOffset = 0) {
         $('html, body').animate({
-            scrollTop: $(targetBlock).offset().top
+            scrollTop: $(allBlocks[indexActiveBlock]).offset().top + xOffset
         }, {
             duration: 1000,
             easing: 'swing'
@@ -29,16 +30,40 @@ window.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = 'hidden';
 
     document.querySelector('.saying-block__btn').addEventListener('click', function () {
-        scrollToBlock(allBlocks[1])
+        scrollToBlock()
+        setTimeout(function () {
+            allNextButtons.forEach(btn => btn.classList.add('change-block-btn__fixed'))
+            allPrevButtons.forEach(btn => btn.classList.add('change-block-btn__fixed'))
+        }, 500)
     })
 
     chooseActiveBlock()
 
-    allChangeButtons.forEach(btn => {
+    allNextButtons.forEach((btn, i) => {
+        btn.textContent = allBlocks[i + 2].querySelector('.inner-block__title').textContent
         btn.addEventListener('click', function () {
-            indexActiveBlock++
+            if (indexActiveBlock < allBlocks.length - 1) indexActiveBlock++
             chooseActiveBlock()
-            scrollToBlock(allBlocks[indexActiveBlock])
+            if (indexActiveBlock < 5) {
+                scrollToBlock(-150)
+            } else {
+                scrollToBlock(-230)
+            }
+        })
+    })
+
+    allPrevButtons.forEach((btn, i) => {
+        btn.textContent = allBlocks[i + 1].querySelector('.inner-block__title').textContent
+        btn.addEventListener('click', function () {
+            if (indexActiveBlock > 1) indexActiveBlock--
+            chooseActiveBlock()
+            if (indexActiveBlock === 1) {
+                scrollToBlock(0)
+            } else if (indexActiveBlock < 5) {
+                scrollToBlock(-150)
+            } else {
+                scrollToBlock(-230)
+            }
         })
     })
 })
