@@ -28,6 +28,13 @@ html, body {
     content: url("../img/bg-start.png");
     z-index: 0;
   }
+
+  @media (max-width: 767px) {
+    &::before {
+      top: -350px;
+      transform: scale(0.5, 0.5);
+    }
+  }
 }
 
 .header {
@@ -41,6 +48,11 @@ html, body {
   background: url("../img/1.header/logo.png") no-repeat 0 50%/contain;
   font-size: 0;
   text-decoration: none;
+
+  @media (max-width: 767px) {
+    position: absolute;
+    top: 20px;
+  }
 }
 
 .header__logo {
@@ -68,19 +80,6 @@ html, body {
   @media (max-width: 767px) {
     width: 185px;
     height: 40px;
-    margin: 0px 47px 0 0;
-
-    &::before {
-      content: '';
-      display: block;
-      width: 36px;
-      height: 28px;
-      position: absolute;
-      top: -8px;
-      left: -1px;
-      background: white url("../img/1.header/logo.png") no-repeat 0 50%/auto 28px;
-      border: 12px solid white;
-      border-right-width: 3px;
-    }
+    margin: 0;
   }
 }

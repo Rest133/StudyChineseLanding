@@ -8,6 +8,16 @@
   align-items: center;
   font-family: "Nunito", sans-serif;
   color: $black-blue;
+
+  @media (max-width: 1110px) {
+    padding: 0 10px;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 320px;
+    padding: 0;
+    margin-top: 70px;
+  }
 }
 
 .footer-title {
@@ -21,12 +31,30 @@
   span {
     color: $red-pink;
   }
+
+  @media (max-width: 1110px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 767px) {
+    margin-top: 25px;
+    width: 100%;
+    font-size: 24px;
+  }
 }
 
 .footer-text {
   margin-top: 30px;
   font-size: 30px;
   font-weight: 300;
+
+  @media (max-width: 1110px) {
+    font-size: 20px;
+  }
+  @media (max-width: 767px) {
+    margin-top: 15px;
+    font-size: 18px;
+  }
 }
 
 .footer-img__container {
@@ -38,4 +66,29 @@
   width: 1300px;
 
   background: url(../img/3.footer/table.png) no-repeat bottom left;
+
+  @media (max-width: 1110px) {
+    padding-bottom: 8%;
+    width: 100%;
+    background-size: contain;
+    background-position: bottom center;
+  }
+
+
+  @media (max-width: 767px) {
+    margin-top: 25px;
+  }
+}
+
+.footer-img {
+  @media (max-width: 1110px) {
+    width: 300px;
+    align-self: center;
+    justify-self: center;
+  }
+
+  @media (max-width: 767px) {
+    width: 127px;
+    height: 112px;
+  }
 }
