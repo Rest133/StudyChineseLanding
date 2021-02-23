@@ -149,10 +149,6 @@ html, body {
   .block_first {
     flex-flow: column-reverse;
     position: relative;
-  }
-}
-@media (max-width: 767px) {
-  .block_first {
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 20px;
@@ -165,6 +161,9 @@ html, body {
 .block_second .inner-block_left {
   margin-top: 180px;
 }
+.block_second .change-block-btn {
+  bottom: -5%;
+}
 @media (max-width: 767px) {
   .block_second {
     padding-left: 0;
@@ -174,6 +173,14 @@ html, body {
 
 .block_third {
   margin-top: -40px;
+}
+.block_third .inner-block__slide {
+  min-height: 230px;
+}
+@media (max-width: 767px) {
+  .block_third .inner-block__slide {
+    min-height: 220px;
+  }
 }
 
 .block_fourth {
@@ -187,13 +194,23 @@ html, body {
 .block_sixth {
   margin-top: -30px;
 }
+.block_sixth .change-block-btn_prev {
+  top: -20%;
+}
 .block_sixth .inner-block_left {
   position: relative;
   top: -100px;
+  min-height: 550px;
+}
+.block_sixth .inner-block__slide {
+  min-height: 132px;
 }
 @media (max-width: 767px) {
   .block_sixth .inner-block_left {
     top: 0;
+  }
+  .block_sixth .inner-block__slide {
+    min-height: 120px;
   }
 }
 
@@ -203,6 +220,9 @@ html, body {
 .block_seventh .inner-block_left {
   position: relative;
   top: -60px;
+}
+.block_seventh .inner-block__slide {
+  min-height: 338px;
 }
 .block_seventh .inner-block__text {
   width: 480px;
@@ -219,6 +239,9 @@ html, body {
   .block_seventh .inner-block__text {
     width: 100%;
   }
+  .block_seventh .inner-block__slide {
+    min-height: 260px;
+  }
 }
 
 .block_eighth {
@@ -227,6 +250,9 @@ html, body {
 .block_eighth .inner-block_left {
   position: relative;
   top: -60px;
+}
+.block_eighth .inner-block__slide {
+  min-height: 300px;
 }
 .block_eighth .inner-block__text {
   width: 480px;
@@ -237,6 +263,9 @@ html, body {
   }
   .block_eighth .inner-block__text {
     width: 100%;
+  }
+  .block_eighth .inner-block__slide {
+    min-height: 250px;
   }
 }
 
@@ -385,6 +414,7 @@ html, body {
 .block_active-mobile .inner-block__text {
   text-align: center;
   font-size: 16px;
+  overflow: scroll;
 }
 .block_active-mobile .tower-image_first {
   position: relative;
@@ -653,14 +683,14 @@ html, body {
   transition: 0.5s all ease-in-out;
   opacity: 0;
   background: url("../img/2.content/saying-bg.png") center 0/contain no-repeat;
-  animation: showMessage 1s forwards 2s, hideMessage 1s forwards 5s;
+  animation: showMessage 1s forwards 3s;
 }
 @media (max-width: 767px) {
   .saying-block {
     background: none;
     padding: 0;
-    top: 60%;
-    left: 5%;
+    top: 65%;
+    left: 20%;
     width: 285px;
     height: 200px;
     z-index: 10;
@@ -737,11 +767,7 @@ html, body {
   width: 59%;
   height: auto;
   opacity: 1;
-}
-@media (max-width: 1110px) {
-  .inner-block_left {
-    z-index: 10;
-  }
+  z-index: 10;
 }
 @media (max-width: 767px) {
   .inner-block_left {
@@ -867,6 +893,14 @@ html, body {
   }
 }
 
+.inner-block__slide {
+  opacity: 1;
+}
+
+.inner-block__slide_hide {
+  display: none;
+}
+
 .inner-block__text {
   margin-top: 30px;
   max-width: 570px;
@@ -906,15 +940,6 @@ html, body {
 
 .inner-block__pagination-button {
   margin-right: 30px;
-  position: relative;
-}
-.inner-block__pagination-button input {
-  opacity: 0;
-}
-.inner-block__pagination-button span {
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -923,9 +948,10 @@ html, body {
   background: #beddee;
   border-radius: 50%;
   cursor: pointer;
-  transition: 0.3s all ease-in-out;
+  transition: 0.8s all ease-in-out;
+  outline: none;
 }
-.inner-block__pagination-button span:before {
+.inner-block__pagination-button:before {
   position: absolute;
   content: "";
   background: none;
@@ -933,14 +959,8 @@ html, body {
   height: 28px;
   border: 1px solid #954090;
   border-radius: inherit;
-  transition: 0.3s all ease-in-out;
+  transition: 0.8s all ease-in-out;
   opacity: 0;
-}
-.inner-block__pagination-button > input:checked + span {
-  background: #954090;
-}
-.inner-block__pagination-button > input:checked + span:before {
-  opacity: 1;
 }
 .inner-block__pagination-button:last-of-type {
   margin-right: 0;
@@ -948,15 +968,20 @@ html, body {
 @media (max-width: 767px) {
   .inner-block__pagination-button {
     margin-right: 15px;
-  }
-  .inner-block__pagination-button span {
     width: 10px;
     height: 10px;
   }
-  .inner-block__pagination-button span:before {
+  .inner-block__pagination-button:before {
     width: 22px;
     height: 22px;
   }
+}
+
+.inner-block__pagination-button_active {
+  background: #954090;
+}
+.inner-block__pagination-button_active:before {
+  opacity: 1;
 }
 
 .change-block-btn {
@@ -1008,14 +1033,15 @@ html, body {
   }
 }
 
-.change-block-btn__fixed {
-  position: fixed;
+.change-block-btn__absolute {
+  position: absolute;
   display: flex;
   transition: opacity 1s ease-in-out;
+  bottom: -20%;
 }
 
 .change-block-btn_prev {
-  top: 40px;
+  top: -25%;
   bottom: initial;
 }
 .change-block-btn_prev::before {
@@ -1635,7 +1661,15 @@ html, body {
     opacity: 1;
   }
 }
-@keyframes hideMessage {
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes hide {
   0% {
     opacity: 1;
   }
